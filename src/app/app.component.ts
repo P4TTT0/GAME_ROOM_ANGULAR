@@ -6,18 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'] //Estilo
 })
 export class AppComponent {
-  title = 'Perez Cardenal Patricio';
-  
-  mail = "";
-  password = "";
-  darSaludo()
-  {
-    alert("¡Hola mundo, " + this.title + "!");
-  }
-
-  iniciarSesion()
-  {
-    alert("Su mail es " + this.mail + "\n" + 
-          "Su contraseña " + this.password);
-  }
 }

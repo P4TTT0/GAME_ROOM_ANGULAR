@@ -1,0 +1,12 @@
+*
+{
+ margin-top: 100px;   
+ background-color: aqua;
+}
+
+.container-fluid
+{
+    background-color: #ffffff;
+    color: aqua;
+    height: 100px;
+}
