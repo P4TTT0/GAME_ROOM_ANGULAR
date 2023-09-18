@@ -36,3 +36,13 @@
 	padding: 10px;
 	border-radius: 0px  6px 6px 0px;
 }
+
+.login
+{
+	max-width: 600px;
+}
+
+.ngx-toastr
+{
+    background-color: #8b8d80 !important;
+}

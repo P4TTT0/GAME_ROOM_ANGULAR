@@ -1,3 +1,30 @@
-<app-home></app-home>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-md bg-body-tertiary fixed-top">
+    <div class="container-fluid justify-content-betweem align-items-center">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler" aria-controls="navbar-toggler" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">
+            <img src="./../../../assets/LOGOTTT.png" width="50px">
+        </a>
+        <div class="collapse navbar-collapse" id="navbar-toggler">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a routerLink="/home" class="nav-link active" aria-current="page">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="/login" class="nav-link">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="/register" class="nav-link">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="/about-me" class="nav-link">About me</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+  </nav>
+<!-- Navbar -->
 <router-outlet></router-outlet>
 

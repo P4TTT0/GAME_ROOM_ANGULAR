@@ -1,0 +1,25 @@
+<div class="container d-flex justify-content-center align-items-center">
+    <div class="screen">
+        <div class="screen-content d-flex justify-content-center align-items-center">
+            <form class="login">
+                <h2>Register</h2>
+                <div class="login__field">
+                    <i class="login__icon fas fa-user"></i>
+                    <input type="text" class="login-input" placeholder="Email" [(ngModel)]="mail" name="mail">
+                </div>
+                <div class="login__field">
+                    <i class="login__icon fas fa-user"></i>
+                    <input type="text" class="login-input" placeholder="User name" [(ngModel)]="name" name="name">
+                </div>
+                <div class="login__field">
+                <i class="login__icon fas fa-lock"></i>
+                <input type="password" class="login-input" placeholder="Password" [(ngModel)]="password" name="password">
+                </div>
+                <button type="button" (click)="onRegisterClick()" class="btn btn-success">
+                    <span class="button__text">Register Now</span>
+                    <i class="button__icon fas fa-chevron-right"></i>
+                </button>				
+            </form>
+        </div>	
+    </div>
+</div>

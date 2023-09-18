@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Usuario } from 'src/app/clases/usuario';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,21 +9,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit
 {
-  ngOnInit(): void {
-    
-  }
-  title = 'Perez Cardenal Patricio';
+
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {}
   
   mail = "";
   password = "";
-  darSaludo()
+
+  public OnLoginClick()
   {
-    alert("¡Hola mundo, " + this.title + "!");
+    let users = Usuario.getLocalStorage();
+
+    users.forEach(user => 
+    {
+      if (this.VerifyCredentials(user))
+      {
+        alert("¡Usuario logueado con exito!");
+        this.router.navigateByUrl('/home');
+        close();
+      }
+    });
+    alert("¡Credenciales incorrectas!");
   }
 
-  iniciarSesion()
+  private VerifyCredentials(user : Usuario) : boolean
   {
-    alert("Su mail es " + this.mail + "\n" + 
-          "Su contraseña " + this.password);
+    if(user.mail != this.mail && user.name != this.mail)
+    {
+      return false;
+    }
+    if(user.password != this.password)
+    {
+      return false;
+    }
+
+    return true;
   }
+
 }
