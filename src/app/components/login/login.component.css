@@ -19,7 +19,7 @@
 
 .screen-content
 {
-	padding: 90px;
+	padding: 50px;
 }
 
 .btn-success
@@ -36,3 +36,24 @@
 	padding: 10px;
 	border-radius: 0px  6px 6px 0px;
 }
+
+.login-input:focus
+{
+	outline: none;
+}
+
+.btn-container
+{
+	margin: 10px 0px 0px 0px;
+}
+
+.p-container
+{
+	margin-top: 30px;
+}
+
+p{
+	font-size: 15px;
+	color: #5e5f57;
+}
+

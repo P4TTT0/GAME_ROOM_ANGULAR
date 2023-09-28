@@ -1,20 +1,25 @@
 <div class="container d-flex justify-content-center align-items-center">
     <div class="screen">
         <div class="screen-content d-flex justify-content-center align-items-center">
-            <form class="login">
+            <form class="login" [formGroup]="regForm" novalidate>
                 <h2>Login</h2>
                 <div class="login__field">
                 <i class="login__icon fas fa-user"></i>
-                <input type="text" class="login-input" placeholder="User name / Email" [(ngModel)]="mail" name="mail">
+                <input type="text" class="login-input" placeholder="User name / Email" name="mail" formControlName="email">
                 </div>
                 <div class="login__field">
                 <i class="login__icon fas fa-lock"></i>
-                <input type="password" class="login-input" placeholder="Password" [(ngModel)]="password" name="password">
+                <input type="password" class="login-input" placeholder="Password" name="password" formControlName="password">
                 </div>
-                <button type="button" class="btn btn-success">
-                <span (click)="OnLoginClick()" class="button__text">Log In Now</span>
-                <i class="button__icon fas fa-chevron-right"></i>
-                </button>				
+                <div class="btn-container d-flex justify-content-start align-items-center">
+                    <button type="button" class="btn btn-success">
+                        <span (click)="OnLoginClick()" class="button__text">Log In Now</span>
+                        <i class="button__icon fas fa-chevron-right"></i>
+                    </button>		
+                </div>
+                <div class="p-container d-flex justify-content-center align-items-center">
+                    <p>¿Aun no tienes cuenta? <a href="/register">Registrate</a></p>
+                </div>
             </form>
         </div>	
     </div>

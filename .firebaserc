@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "labo-project-iv"
+  },
+  "targets": {
+    "labo-project-iv": {
+      "hosting": {
+        "my-app": [
+          "labo-project-iv"
+        ]
+      }
+    }
   }
 }

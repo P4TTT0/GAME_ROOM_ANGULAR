@@ -1,54 +1,103 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Usuario } from 'src/app/clases/usuario';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AutheticationService } from 'src/app/services/authetication.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent 
+export class RegisterComponent implements OnInit
 {
-  mail = "";
-  name = "";
-  password = "";
-
-  constructor(private router: Router, private toastr: ToastrService) 
+  public regForm : FormGroup;
+  private validationMessages = 
   {
+    email: 
+    [
+      { type: 'required', message: 'El correo electrónico es requerido.' },
+      { type: 'email', message: 'El correo electrónico debe ser válido.' }
+    ],
+    password: 
+    [
+      { type: 'required', message: 'La contraseña es requerida.' }
+    ]
+  };
 
+  constructor(private router: Router, private toastr: ToastrService, private auth : AutheticationService, private formBuilder : FormBuilder) 
+  {
+    this.regForm = this.formBuilder.group({
+      email: ['',
+        [
+          Validators.required,
+          Validators.email
+        ]],
+      password: ['', [Validators.required]]
+    })
   }
 
-  onRegisterClick()
+  ngOnInit(): void 
   {
-    if(this.verifyCredentials())
-    {
-      this.toastr.success('¡Registro exitoso!', 'Éxito');
-      let user : Usuario = new Usuario(this.name, this.password, this.mail);
-      user.setLocalStorage();
-      this.router.navigateByUrl('/home');
-    }
-    else
-    {
-      this.toastr.success('¡Complete los campos requeridos!', 'Error');
-    }
   }
 
-  verifyCredentials() : boolean
+  public async OnRegisterClick()
   {
-    if(this.mail.length < 1)
+    // const loading = await this.loadingCtrl.create();
+    // await loading.present();
+
+    if (!this.regForm) 
     {
       return false;
     }
-    if(this.password.length < 1)
+
+    if (this.regForm?.valid) 
     {
-      return false;
+      const user = await this.auth.register(this.regForm.value.email, this.regForm.value.password).catch((error) => {
+        console.log(error);
+        // loading.dismiss();
+      })
+
+      if (user) 
+      {
+        // loading.dismiss();
+        this.router.navigate(["/home"]);
+      }
+      else 
+      {
+        alert("¡Credenciales incorrectas!");
+        //this.showMessage("¡Credenciales incorrectas!");
+      }
     }
-    if(this.name.length < 1)
+    else 
     {
-      return false;
+      Object.keys(this.regForm?.controls).forEach(field => {
+        const control = this.regForm?.get(field);
+
+        if (control instanceof FormControl && !control.valid) 
+        {
+          const messages = this.validationMessages[field as keyof typeof this.validationMessages];
+          let errorMessage = '';
+          if (messages) 
+          {
+            for (const key in control.errors) {
+              errorMessage += messages.find(x => x.type === key)?.message + " ";
+
+            }
+          }
+          alert(errorMessage);
+          // this.showMessage(errorMessage);
+          // loading.dismiss();
+        }
+      })
     }
 
     return true;
+  }
+
+  get errorControl()
+  {
+    return this.regForm?.controls;
   }
 }
