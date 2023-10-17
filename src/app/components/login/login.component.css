@@ -36,3 +36,19 @@
 	padding: 10px;
 	border-radius: 0px  6px 6px 0px;
 }
+
+small{
+	color: #ff4a4a;
+}
+
+.users-container
+{
+	width: 100%;
+	margin: 10px 0px;
+}
+
+.user
+{
+	background-color:#322624;
+	color: #8b8d80;
+}

@@ -1,19 +1,31 @@
 <div class="container d-flex justify-content-center align-items-center">
     <div class="screen">
         <div class="screen-content d-flex justify-content-center align-items-center">
-            <form class="login">
+            <form class="login" [formGroup]="regForm">
                 <h2>Register</h2>
                 <div class="login__field">
                     <i class="login__icon fas fa-user"></i>
-                    <input type="text" class="login-input" placeholder="Email" [(ngModel)]="mail" name="mail">
+                    <input type="text" class="login-input" placeholder="Email" formControlName="email">
+                    <div *ngIf="regForm.controls['email'].errors != null">
+                        <small *ngIf="regForm.controls['email'].errors!['required'] && regForm.controls['email'].touched">¡El Email es requerido!</small>
+                        <small *ngIf="regForm.controls['email'].errors!['email'] && regForm.controls['email'].touched">¡El campo debe ser un Email valido!</small>
+                    </div>
                 </div>
                 <div class="login__field">
                     <i class="login__icon fas fa-user"></i>
-                    <input type="text" class="login-input" placeholder="User name" [(ngModel)]="name" name="name">
+                    <input type="text" class="login-input" placeholder="User name" formControlName="user">
+                    <div *ngIf="regForm.controls['user'].errors != null">
+                        <small *ngIf="regForm.controls['user'].errors!['minlength'] && regForm.controls['user'].touched">¡El campo debe tener 3 caracteres como minimo!</small>
+                        <small *ngIf="regForm.controls['user'].errors!['maxlength'] && regForm.controls['user'].touched">¡El campo no puede tener más de 15 caracteres como minimo!</small>
+                    </div>
                 </div>
                 <div class="login__field">
                 <i class="login__icon fas fa-lock"></i>
-                <input type="password" class="login-input" placeholder="Password" [(ngModel)]="password" name="password">
+                <input type="password" class="login-input" placeholder="Password" formControlName="password">
+                <div *ngIf="regForm.controls['password'].errors != null">
+                    <small *ngIf="regForm.controls['password'].errors!['requerid'] && regForm.controls['password'].touched">¡La contraseña es requerida!</small>
+                    <small *ngIf="regForm.controls['password'].errors!['minlength'] && regForm.controls['password'].touched">¡La contraseña debe tener al menos 6 caracteres!</small>
+                </div>
                 </div>
                 <button type="button" (click)="onRegisterClick()" class="btn btn-success">
                     <span class="button__text">Register Now</span>

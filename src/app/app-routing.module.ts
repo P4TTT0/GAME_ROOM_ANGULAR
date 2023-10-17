@@ -8,6 +8,8 @@ import { AboutmeComponent } from './components/aboutme/aboutme.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { loginGuard } from './guards/login.guard';
+import { LoadingComponent } from './components/loading/loading.component';
 
 const routes: Routes = [
 {path: "home", component: HomeComponent},

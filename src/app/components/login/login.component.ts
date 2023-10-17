@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from 'src/app/clases/usuario';
 import { Route, Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/services/auth.service';
+import { DataService } from 'src/app/services/data.service';
+import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
   selector: 'app-login',
@@ -9,42 +14,48 @@ import { Route, Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit
 {
+  public regForm : FormGroup;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private formBuilder : FormBuilder, private toast : ToastrService, private auth : AuthService, private data : DataService, private loading : LoadingService) {
+    this.regForm = this.formBuilder.group({
+      email: ['',[ Validators.required]],
+      password: ['', [Validators.required]]
+    })
+  }
 
   ngOnInit(): void {}
   
-  mail = "";
-  password = "";
 
-  public OnLoginClick()
+  public async OnLoginClick()
   {
-    let users = Usuario.getLocalStorage();
-
-    users.forEach(user => 
+    this.loading.show();
+    if(this.regForm.controls['email'].valid && this.regForm.controls['password'].valid)
     {
-      if (this.VerifyCredentials(user))
-      {
-        alert("¡Usuario logueado con exito!");
+      try{
+
+        const credential = await this.auth.logIn(this.regForm.controls['email'].value, this.regForm.controls['password'].value);
+        const userUid = credential?.user?.uid || '';
+        const userName = await this.data.getUserNameByUID(userUid);
+        this.toast.success('¡Log In completado!', 'Éxito');
         this.router.navigateByUrl('/home');
-        close();
+        console.log(this.auth.userName);
       }
-    });
-    alert("¡Credenciales incorrectas!");
+      catch(error)
+      {
+        this.toast.error('¡Credenciales incorrectas!', 'Error');
+      }
+    }
+    else
+    {
+      this.toast.error('¡Errores en los campos!', 'Error');
+    }
+    this.loading.hide();
   }
 
-  private VerifyCredentials(user : Usuario) : boolean
+  public OnFillClick(email : string, password : string)
   {
-    if(user.mail != this.mail && user.name != this.mail)
-    {
-      return false;
-    }
-    if(user.password != this.password)
-    {
-      return false;
-    }
-
-    return true;
+    this.regForm.controls['email'].setValue(email);
+    this.regForm.controls['password'].setValue(password);
   }
 
 }

@@ -1,30 +1,47 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-md bg-body-tertiary fixed-top">
-    <div class="container-fluid justify-content-betweem align-items-center">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler" aria-controls="navbar-toggler" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="#">
-            <img src="./../../../assets/LOGOTTT.png" width="50px">
-        </a>
-        <div class="collapse navbar-collapse" id="navbar-toggler">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a routerLink="/home" class="nav-link active" aria-current="page">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a routerLink="/login" class="nav-link">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a routerLink="/register" class="nav-link">Register</a>
-                </li>
-                <li class="nav-item">
-                    <a routerLink="/about-me" class="nav-link">About me</a>
-                </li>
-            </ul>
-        </div>
+<div class="app-container">
+    <div class="loading-overlay" *ngIf="loading.isLoading">
+        <app-loading></app-loading>
     </div>
-  </nav>
-<!-- Navbar -->
-<router-outlet></router-outlet>
+    <nav class="navbar navbar-expand-md bg-body-tertiary fixed-top">
+        <div class="container-fluid justify-content-beetween align-items-center">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler" aria-controls="navbar-toggler" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                <img src="./../../../assets/LOGOTTT.png" width="50px">
+            </a>
+            <div class="collapse navbar-collapse" id="navbar-toggler">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <button type="button" class="btn" *ngIf="auth.userName && auth.userName.length > 2">
+                        <span>@{{auth.userName}}</span>
+                        <i class="bi bi-person"></i>
+                    </button>	
+                    <li class="nav-item">
+                        <a routerLink="/home" class="nav-link active" aria-current="page">Home</a>
+                    </li>
+                    <div *ngIf="auth.logueado == false; else elseBlock" style="width: 100%; display: flex; justify-content: center; align-items: start; ">
+                        <li class="nav-item">
+                            <a routerLink="/login" class="nav-link">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a routerLink="/register" class="nav-link">Register</a>
+                        </li>
+                    </div>
+                    <ng-template #elseBlock>          
+                        <button type="button" class="btn">
+                            <span style="margin-right: 10px;" class="button__text" (click)="OnLogOutClick()">Log out</span>
+                            <i class="bi bi-box-arrow-right"></i>
+                        </button>	
+                    </ng-template>
+                    <li class="nav-item">
+                        <a routerLink="/about-me" class="nav-link">About me</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+      </nav>
+    <!-- Navbar -->
+    <router-outlet></router-outlet>
+</div>
 
