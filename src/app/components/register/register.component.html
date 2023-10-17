@@ -27,10 +27,15 @@
                     <small *ngIf="regForm.controls['password'].errors!['minlength'] && regForm.controls['password'].touched">¡La contraseña debe tener al menos 6 caracteres!</small>
                 </div>
                 </div>
-                <button type="button" (click)="onRegisterClick()" class="btn btn-success">
-                    <span class="button__text">Register Now</span>
-                    <i class="button__icon fas fa-chevron-right"></i>
-                </button>				
+                <div class="btn-container d-flex justify-content-start align-items-center">
+                    <button type="button" (click)="onRegisterClick()" class="btn btn-success">
+                        <span class="button__text">Register Now</span>
+                        <i class="button__icon fas fa-chevron-right"></i>
+                    </button>	
+                </div>
+                <div class="p-container d-flex justify-content-center align-items-center">
+                    <p>¿Ya tienes cuenta? <a href="/login">Inicia sesion</a></p>
+                </div>
             </form>
         </div>	
     </div>

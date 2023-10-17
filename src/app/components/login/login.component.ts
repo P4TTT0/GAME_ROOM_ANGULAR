@@ -58,4 +58,10 @@ export class LoginComponent implements OnInit
     this.regForm.controls['password'].setValue(password);
   }
 
+  get errorControl()
+  {
+    return this.regForm?.controls;
+  }
+
+
 }
