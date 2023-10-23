@@ -1,20 +1,66 @@
 import { Injectable } from '@angular/core';
-import { addDoc, collection, Firestore, getDoc, getDocs, updateDoc, collectionData, doc, query, where, orderBy, setDoc } from
+import { addDoc, collection, Firestore, getDoc, getDocs, updateDoc, collectionData, doc, query, where, orderBy, setDoc, onSnapshot } from
 '@angular/fire/firestore';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-
+  
   constructor(private firestore : Firestore) { }
+
+  public subscribeToMessages(): Observable<any[]> {
+    const messageCollection = collection(this.firestore, 'Message');
+    const q = query(messageCollection, orderBy('Timestamp', 'asc'));
+
+    return new Observable<any[]>((observer) => {
+      const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        const messages = querySnapshot.docs.map((doc) => doc.data());
+        observer.next(messages);
+      });
+
+      return () => unsubscribe();
+    });
+  }
+
+  public async savePoints(userName : string, game : string, maxPoints : number)
+  {
+    const userCollection = collection(this.firestore, 'Games');
+    const q = query(userCollection, where('UserName', '==', userName), where('Game', '==', game));
+    const querySnapshot = await getDocs(q);
+    if(!querySnapshot.empty)
+    {
+      const userDoc = querySnapshot.docs[0];
+      let gameId = userDoc.id;
+      let gameData = userDoc.data();
+      if(maxPoints > gameData['MaxPoints'])
+      {
+        console.log(gameData['MaxPoints']);
+        let gameDoc = doc(userCollection, gameId);
+  
+        await updateDoc(gameDoc, 
+        {
+          MaxPoints: maxPoints
+        });
+      }
+    }
+    else
+    {
+      await addDoc(userCollection,
+      {
+        UserName: userName,
+        Game: game,
+        MaxPoints: maxPoints,
+      });
+    }
+  }
 
   public async getUsers()
   {
     const imageCollection = collection(this.firestore, 'User');
     const querySnapshot = await getDocs(imageCollection);
     const images = querySnapshot.docs.map(doc => doc.data());
-
   }
 
   public async SaveUser(userUID : string, userName : string, email : string)
@@ -36,7 +82,8 @@ export class DataService {
     const q = query(userCollection, where('UserName', '==', userName));
     const querySnapshot = await getDocs(q);
   
-    if (querySnapshot.empty) {
+    if (querySnapshot.empty) 
+    {
       return null;
     }
     const userDoc = querySnapshot.docs[0];
@@ -88,6 +135,27 @@ export class DataService {
       console.log('User not found');
       return '';
     }
+  }
+
+  public async sendMessage(message : string, userName : string)
+  {
+    const messageCollection = collection(this.firestore, 'Message');
+    const timestamp = new Date();
+    await addDoc(messageCollection, 
+      {
+        Message: message,
+        UserName: userName,
+        Timestamp: timestamp,
+      });
+  }
+
+  public async getMessage()
+  {
+    const messageCollection = collection(this.firestore, 'Message');
+    const q = query(messageCollection,  orderBy('Timestamp', 'asc'));
+    const querySnapshot = await getDocs(q);
+    const messages = querySnapshot.docs.map((doc) => doc.data());
+    return messages;
   }
 
 }

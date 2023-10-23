@@ -1,0 +1,26 @@
+<div class="start-container" *ngIf="this.isGameStarted == false">
+    <div class="start">
+        <H1>Ahorcado</H1>
+      <button class="btn" (click)="iniciarJuego()">COMENZAR</button>
+    </div>
+</div>
+<div style="margin-top: 80px;" *ngIf="this.isGameStarted">
+    <div class="word-container">
+        <span style="margin-right: 10px;">Puntos: {{this.puntos}}</span>
+        <span>{{ palabraOculta }}</span>
+    </div>
+    <div class="body">
+        <div class="image-container">
+            <img src="./../../../assets/{{7 - intentosRestantes}}.png" style="width: 400px;">
+        </div>
+        <div class="letters-container">
+            <div class="row">
+                <div *ngFor="let letra of letras" class="boton-letra col-md-2 col-sm-6">
+                  <button class="button" style="margin-right: 10px;" (click)="adivinar(letra)" [ngClass]="{'button-selected': letrasUsadas.includes(letra)}">
+                    {{ letra }}
+                  </button>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>

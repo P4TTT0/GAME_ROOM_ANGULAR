@@ -1,0 +1,20 @@
+<div class="container-fluid" style="margin-top: 6
+0px;">
+    <div class="title-container">
+        <h1>Chat de sala de juegos</h1>
+        <span>@{{auth.userName}}</span>
+    </div>
+    <div class="message-container">
+        
+        <div [ngClass]="{'sub-message-user': message.UserName == auth.userName, 'sub-message': message.UserName != auth.userName}" *ngFor="let message of messages">
+            <div [ngClass]="{'message': message.UserName != auth.userName, 'message-user': message.UserName == auth.userName}">
+                <span><strong>{{ message.UserName }}</strong> ({{ message.Timestamp.toDate() | date: 'HH:mm:ss' }}): {{ message.Message }}</span>
+            </div>
+        </div>
+    </div>
+
+    <form [formGroup]="chatForm" (ngSubmit)="sendMessage()">
+        <input class="input-message" type="text" formControlName="message" placeholder="Escribe tu mensaje" />
+        <button type="submit" class="btn btn-success">Enviar</button>
+      </form>
+</div>

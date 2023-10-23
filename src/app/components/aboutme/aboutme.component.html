@@ -1,11 +1,18 @@
-<div class="d-flex">
+<div class="d-flex aboutme-container">
     <div class="container-fluid aside-profile">
         <div class="container d-flex justify-content-center">
-            <img class="container j" src="./../../../assets/fotoperfil.jpeg">
+            <img [src]="profile.avatar_url" style="width: 200px;" class="container j">
+        </div>
+        <div class="d-flex flex-column">
+            <span style="padding: 12px; background-color: #814C4B60; border-radius: 20px; margin-bottom: 10px;">{{profile.name}}</span>
+            <span style="margin-bottom: 10px;">{{profile.bio}}</span>
+            <span style="margin-bottom: 10px;">{{profile.location}}</span>
         </div>
     </div>
     <div class="container-fluid h">
         <h1 class="title">Patricio Perez Cardenal</h1>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Placeat ullam quibusdam officiis unde et natus aperiam ratione quis repellat, dolores repudiandae velit rem. Corrupti sint ipsa consequatur ducimus porro iste. Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem porro sed alias nam vitae accusantium necessitatibus nostrum tempore, ratione laboriosam hic, veniam asperiores tempora doloribus harum totam voluptatem eligendi earum.</p>
+        <p>Me apasiona aprender nuevas tecnologías y herramientas que me permitan crear soluciones más eficientes y de mayor calidad, así como afrontar retos que me permitan crecer personal y profesionalmente. Soy una persona orientada a resultados, con habilidades para liderar proyectos y buscar soluciones innovadoras. Estoy comprometido con la mejora continua y el aprendizaje constante.</p>
+        <h4>Mi juego.</h4>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa quod neque quasi, vero commodi libero facilis amet. Sit vel aut, ullam aliquid fugit blanditiis quaerat, nulla eaque animi eligendi nisi!</p>
     </div>
 </div>

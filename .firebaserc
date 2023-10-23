@@ -1,14 +1,8 @@
 {
   "projects": {
-    "default": "labo-project-iv"
+    "default": "labo-project-iv",
+    "games": "labo-project-iv"
   },
-  "targets": {
-    "labo-project-iv": {
-      "hosting": {
-        "my-app": [
-          "labo-project-iv"
-        ]
-      }
-    }
-  }
+  "targets": {},
+  "etags": {}
 }

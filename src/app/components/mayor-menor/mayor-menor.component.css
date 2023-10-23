@@ -1,0 +1,29 @@
+.start-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0c0909;
+}
+
+.start {
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #814C4B;
+    color: #FFE5D9;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+img
+{
+    width: 230px;
+}

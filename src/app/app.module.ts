@@ -20,6 +20,11 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { AuthService } from './services/auth.service';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { LoadingComponent } from './components/loading/loading.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { AhorcadoComponent } from './components/ahorcado/ahorcado.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { MayorMenorComponent } from './components/mayor-menor/mayor-menor.component';
+import { PreguntadosComponent } from './components/preguntados/preguntados.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +35,10 @@ import { LoadingComponent } from './components/loading/loading.component';
     RegisterComponent,
     ErrorComponent,
     LoadingComponent,
+    ChatComponent,
+    AhorcadoComponent,
+    MayorMenorComponent,
+    PreguntadosComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +46,7 @@ import { LoadingComponent } from './components/loading/loading.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),

@@ -1,0 +1,18 @@
+<div class="start-container" *ngIf="this.isGameStarted == false">
+    <div class="start">
+        <H1>Mayor - Menor</H1>
+      <button class="btn" (click)="comenzar()">COMENZAR</button>
+    </div>
+</div>
+<div class="container" *ngIf="this.isGameStarted">
+    <div class="d-flex justify-content-beetween align-items-center">
+        <img src="./../../../assets/dorsoCarta.png" *ngIf="this.isWinEvent == false">
+        <img [src]="this.leftCard" *ngIf="this.isWinEvent">
+        <div class="d-flex flex-column justify-content-center align-items-center"  style="margin: 0px 40px;">
+            <button class="btn" (click)="onMayorClick()">MAYOR</button>
+            <span style="color: #ECE5D9;">Ó</span>
+            <button class="btn" (click)="onMenorClick()">MENOR</button>
+        </div>
+        <img [src]="this.rightCard">
+    </div>
+</div>

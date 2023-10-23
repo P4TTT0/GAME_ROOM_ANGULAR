@@ -22,30 +22,22 @@ export class AuthService {
   public logueado : boolean = false;
   public userName : string = "";
 
-  public async logIn(email : string, password : string)
-  {
-    try{
-      const credential = await this.ngFireAuth.signInWithEmailAndPassword(email, password);
+  public async logIn(emailOrUsername: string, password: string) {
+    try {
+      let userEmail = emailOrUsername;
+      
+      if (!emailOrUsername.includes('@')) {
+        userEmail = await this.data.GetUserEmailByUserName(emailOrUsername) || '';
+      }
+  
+      const credential = await this.ngFireAuth.signInWithEmailAndPassword(userEmail, password);
       const uid = await this.getUserUid() || '';
       this.userName = await this.data.getUserNameByUID(uid);
       this.logueado = true;
+
       return credential;
-    }
-    catch(error)
-    {
-      try
-      {  
-        const userEmail = await this.data.GetUserEmailByUserName(email) || '';
-        const credential = await this.ngFireAuth.signInWithEmailAndPassword(userEmail.toString(), password);
-        const uid = await this.getUserUid() || '';
-        this.userName = await this.data.getUserNameByUID(uid);
-        this.logueado = true;
-        return credential;
-      }
-      catch(error)
-      {
-        return null
-      }
+    } catch (error) {
+      return null;
     }
   }
 
@@ -53,6 +45,7 @@ export class AuthService {
   {
     this.logueado = false;
     this.userName = '';
+    localStorage.removeItem('userToken');
     return await this.ngFireAuth.signOut();
   }
 
@@ -82,5 +75,12 @@ export class AuthService {
         }
       });
     });
+  }
+
+  public async reLogin() 
+  {
+    const uid = await this.getUserUid() || '';
+    this.userName = await this.data.getUserNameByUID(uid);
+    this.logueado = true;
   }
 }
