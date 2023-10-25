@@ -1,45 +1,47 @@
 <!-- Header -->
-<div class="container-fluid header flex-column align-items-start justify-content-center">
-    <h2 class="fnt-color">ALWAYS</h2>
-    <div>
-        <h1 class="typing-anim">New games</h1>
-    </div>
-</div>
-<!-- Header -->
-
-
-<!-- Footer Start -->
-<div class="container-fluid p-3 card-container">
-    <div class="row d-flex justify-content-around align-items-center">
-        <div class="card col-sm-6" style="width: 18rem;" (click)="OnClickGame('ahorcado')">
-            <img src="./../../../assets/ahorcadoPortada.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <p class="card-text"><b>AHORCADO</b></p>
-            </div>
-        </div>
-        <div class="card col-sm-6" style="width: 18rem;" (click)="OnClickGame('mayor-menor')">
-            <img src="./../../../assets/tetris.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <p class="card-text"><b>MAYOR ó MENOR</b></p>
-            </div>
-        </div>
-        <div class="card col-sm-6" style="width: 18rem;" (click)="OnClickGame('preguntados')">
-            <img src="./../../../assets/preguntados.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <p class="card-text"><b>PREGUNTADOS</b></p>
-            </div>
-        </div>
-        <div class="card col-sm-6" style="width: 18rem;">
-            <img src="./../../../assets/tetris.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
+<div>
+    <div class="container-fluid header flex-column align-items-start justify-content-center" style="border-radius: 40px 40px 0px 0px;">
+        <h2 class="fnt-color">ALWAYS</h2>
+        <div>
+            <h1 class="typing-anim">New games</h1>
         </div>
     </div>
-</div>
-<!-- Footer End -->
-
-<!-- Footer -->
-<div class="container-fluid d-flex justify-content-center align-items-center footer">
-    <span>Designed by Perez Cardenal Patricio</span>
+    <!-- Header -->
+    
+    
+    <!-- Footer Start -->
+    <div class="container-fluid p-3 card-container">
+        <div class="row d-flex justify-content-around align-items-center">
+            <div class="card col-sm-6" style="width: 18rem;" (click)="OnClickGame('ahorcado')">
+                <img src="./../../../assets/ahorcadoPortada.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text"><b>AHORCADO</b></p>
+                </div>
+            </div>
+            <div class="card col-sm-6" style="width: 18rem;" (click)="OnClickGame('mayor-menor')">
+                <img src="./../../../assets/mayormenor.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text"><b>MAYOR ó MENOR</b></p>
+                </div>
+            </div>
+            <div class="card col-sm-6" style="width: 18rem;" (click)="OnClickGame('preguntados')">
+                <img src="./../../../assets/preguntados.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text"><b>PREGUNTADOS</b></p>
+                </div>
+            </div>
+            <div class="card col-sm-6" style="width: 18rem;">
+                <img src="./../../../assets/matematicas.jpeg" class="card-img-top" (click)="OnClickGame('matematicas')" alt="...">
+                <div class="card-body">
+                    <p class="card-text"><b>MATEMÁTICAS</b></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+    
+    <!-- Footer -->
+    <div class="container-fluid d-flex justify-content-center align-items-center footer">
+        <span>Designed by Perez Cardenal Patricio</span>
+    </div>
 </div>

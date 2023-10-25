@@ -25,6 +25,10 @@ import { AhorcadoComponent } from './components/ahorcado/ahorcado.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MayorMenorComponent } from './components/mayor-menor/mayor-menor.component';
 import { PreguntadosComponent } from './components/preguntados/preguntados.component';
+import { MatematicasComponent } from './components/matematicas/matematicas.component';
+import { EncuestaComponent } from './components/encuesta/encuesta.component';
+import { TablaPuntajeComponent } from './components/tabla-puntaje/tabla-puntaje.component';
+import { VistaEncuestasComponent } from './components/vista-encuestas/vista-encuestas.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +43,10 @@ import { PreguntadosComponent } from './components/preguntados/preguntados.compo
     AhorcadoComponent,
     MayorMenorComponent,
     PreguntadosComponent,
+    MatematicasComponent,
+    EncuestaComponent,
+    TablaPuntajeComponent,
+    VistaEncuestasComponent
   ],
   imports: [
     BrowserModule,

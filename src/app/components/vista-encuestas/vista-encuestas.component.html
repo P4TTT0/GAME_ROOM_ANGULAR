@@ -1,0 +1,25 @@
+<div class="container-fluid" style="margin-top: 3%;">
+    <div class="encuesta-container">
+        <div>
+            <h1 style="color: #393a35;">¡ENCUESTAS!</h1>
+        </div>
+        <div class="encuestas-container">
+            <div class="comentario" *ngFor="let encuesta of this.encuestas">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <span class="userName">@{{encuesta.UserName}}</span>
+                        <span style="margin-left: 10px;">{{encuesta.Apellido}} {{encuesta.Nombre}}</span>
+                        <span  style="margin-left: 10px;">{{encuesta.NumeroTelefono}}</span>
+                    </div>
+                    <div>
+                        <span class="userName">Puntaje: {{encuesta.PuntajePagina}}</span>
+                        <span class="userName" style="margin-left: 10px;">Juego favorito: {{encuesta.JuegoFavorito}}</span>
+                    </div>
+                </div>
+                <div style="margin: 10px; color: #393a35;">
+                    {{encuesta.Observaciones}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

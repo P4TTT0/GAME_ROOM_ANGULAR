@@ -1,0 +1,39 @@
+.container-fluid
+{
+    padding: 50px;
+}
+
+.encuesta-container
+{
+    background-color: #929487;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.encuestas-container
+{
+    background-color: #77796d;
+    height: 400px;
+    overflow-y: scroll;
+    padding: 20px;  
+}
+
+.comentario
+{
+    background-color: #5a5c52;
+    padding: 20px;
+    border-radius: 0px 20px 20px 20px;
+    margin-bottom: 10px;
+}
+
+.userName
+{
+    padding: 10px;
+    background-color: #7F4B4A80;
+    border-radius: 20px;
+}
+
+span
+{
+    color: #77796d;
+}

@@ -1,0 +1,36 @@
+<div class="start-container" *ngIf="this.isGameStarted == false">
+    <div class="start">
+        <H1>Matematicas</H1>
+        <button class="btn" (click)="comenzar()">COMENZAR</button>
+    </div>
+</div>
+<div *ngIf="this.isGameStarted" class="screen">
+    <div class="container">
+        <span class="span" style="margin-right: 30px;">PUNTOS: {{this.puntos}}</span>
+        <span class="span">TIEMPO: {{this.timeLeft}}</span>
+    </div>
+    <div class="operation d-flex justify-content-beetween align-items-center" style="margin-top: 50px;">
+        <h1>{{currentOperation}}</h1>
+        <div class="response">
+            <span style="margin-right: 20px;">=</span>
+            <span>{{this.userResponse}}</span>
+        </div>
+    </div>
+    <div class="letters-container">
+        <div class="row d-flex justify-content-center" style="margin-top: 50px;">
+            <div class="d-flex justify-content-between" style="width: 100%; padding: 20px;">
+                <button class="button-borrar" style="margin-right: 10px;" (click)="onBorrarClick()">
+                    BORRAR
+                </button>
+                <button class="button-verificar" style="margin-right: 10px;" (click)="onCheckAnswer()">
+                    VERIFICAR
+                </button>
+            </div>
+            <div *ngFor="let numero of this.numerosSeleccionables" class="boton-letra col col-sm-3">
+              <button class="button" style="margin-right: 10px;" (click)="seleccionar(numero)">
+                {{ numero }}
+              </button>
+            </div>
+        </div>
+    </div>
+  </div>

@@ -4,15 +4,21 @@
       <button class="btn" (click)="comenzar()">COMENZAR</button>
     </div>
 </div>
-<div class="container" *ngIf="this.isGameStarted">
-    <div class="d-flex justify-content-beetween align-items-center">
-        <img src="./../../../assets/dorsoCarta.png" *ngIf="this.isWinEvent == false">
-        <img [src]="this.leftCard" *ngIf="this.isWinEvent">
-        <div class="d-flex flex-column justify-content-center align-items-center"  style="margin: 0px 40px;">
+<div class="container-fluid" *ngIf="this.isGameStarted">
+    <div class="d-flex justify-content-beetween align-items-center row">
+        <div class="col-md-4" style="width: 100%; padding: 0px; text-align: center;">
+            <img src="./../../../assets/dorsoCarta.png" *ngIf="this.isWinEvent == false">
+        </div>
+        <div class="col-md-4" style="width: 100%; padding: 0px; text-align: center;">
+            <img [src]="this.leftCard" *ngIf="this.isWinEvent">
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-center col-md-2">
             <button class="btn" (click)="onMayorClick()">MAYOR</button>
             <span style="color: #ECE5D9;">Ó</span>
             <button class="btn" (click)="onMenorClick()">MENOR</button>
         </div>
-        <img [src]="this.rightCard">
+        <div class="col-md-5" style="width: 100%;" style="width: 100%; padding: 0px; text-align: center;">
+            <img [src]="this.rightCard">
+        </div>
     </div>
 </div>

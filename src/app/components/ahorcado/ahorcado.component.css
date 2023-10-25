@@ -1,9 +1,10 @@
 .letters-container
 {
     display: flex;
-    padding: 20px;
+    justify-content: center;
+    align-items: center;
     flex: 2;
-    margin-right: 40px;
+    margin-right: 70px;
 }
 
 .image-container
@@ -31,16 +32,28 @@
     color: #212529;
 }
 
+img 
+{
+    width: 400px;
+}
+
 .word-container
 {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 0px;
-    padding: 70px;
+    padding: 20px;
+}
+
+.letter
+{
+    width: 60px;
+    margin: 4px;
 }
 span
 {
+    width: 100%;
     font-size: 60px;
     color: #929487;
 }
@@ -67,10 +80,34 @@ span
 }
 
 button {
-    padding: 10px 20px;
     background-color: #814C4B;
     color: #FFE5D9;
     border: none;
     cursor: pointer;
     border-radius: 20px;
+}
+
+@media (max-width: 1070px) {
+    span {
+        font-size: 30px; /* Tamaño de fuente para pantallas más pequeñas */
+    }
+    img
+    {
+        width: 200px;
+    }
+    .body
+    {
+        display: flex;
+        flex-direction: column;
+    }
+    .letters-container
+    {
+        margin-right: 0px;
+    }
+}
+
+@media (max-width: 768px) {
+    span {
+        font-size: 20px; /* Tamaño de fuente para pantallas más pequeñas */
+    }
 }

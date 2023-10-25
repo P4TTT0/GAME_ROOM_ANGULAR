@@ -27,3 +27,35 @@ img
 {
     width: 230px;
 }
+
+.col-md-2
+{
+    margin: 10px 0px;
+    width: 100%;
+}
+
+.container-fluid
+{
+    width: 100%; 
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    height: 100%; 
+    margin-top: 6%;
+}
+
+@media (max-width: 1070px) {
+    img
+    {
+        width: 170px;
+    }
+
+    .container-fluid
+    {
+        margin-top: 40%;
+    }
+    .col-md-2
+    {
+        margin: 10px 0px;
+    }
+}

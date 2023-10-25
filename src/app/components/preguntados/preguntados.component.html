@@ -8,10 +8,10 @@
     <div class="question">
         <h1>{{this.preguntaDecodificada}}</h1>
     </div>
-    <div class="responses">
-        <button (click)="verificarRespuesta(this.repuestas[0], 0)" [ngClass]="this.respuestasClases[0]" *ngIf="this.repuestas[0]">{{this.repuestas[0]}}</button>
-        <button (click)="verificarRespuesta(this.repuestas[1], 1)" [ngClass]="this.respuestasClases[1]" *ngIf="this.repuestas[1]">{{this.repuestas[1]}}</button>
-        <button (click)="verificarRespuesta(this.repuestas[2], 2)" [ngClass]="this.respuestasClases[2]" *ngIf="this.repuestas[2]">{{this.repuestas[2]}}</button>
-        <button (click)="verificarRespuesta(this.repuestas[3], 3)" [ngClass]="this.respuestasClases[3]" *ngIf="this.repuestas[3]">{{this.repuestas[3]}}</button>
+    <div class="responses row">
+        <button class="col" (click)="verificarRespuesta(this.repuestas[0], 0)" [ngClass]="this.respuestasClases[0]" *ngIf="this.repuestas[0]">{{this.repuestas[0]}}</button>
+        <button class="col" (click)="verificarRespuesta(this.repuestas[1], 1)" [ngClass]="this.respuestasClases[1]" *ngIf="this.repuestas[1]">{{this.repuestas[1]}}</button>
+        <button class="col" (click)="verificarRespuesta(this.repuestas[2], 2)" [ngClass]="this.respuestasClases[2]" *ngIf="this.repuestas[2]">{{this.repuestas[2]}}</button>
+        <button class="col" (click)="verificarRespuesta(this.repuestas[3], 3)" [ngClass]="this.respuestasClases[3]" *ngIf="this.repuestas[3]">{{this.repuestas[3]}}</button>
     </div>
 </div>

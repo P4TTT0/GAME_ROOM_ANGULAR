@@ -29,6 +29,7 @@ export class AhorcadoComponent {
   {
     this.palabraSecreta =  this.palabrasSecretas[Math.floor(Math.random() * (this.palabrasSecretas.length + 1))];
     this.palabraOculta = '_ '.repeat(this.palabraSecreta.length);
+    this.isGameStarted = true;
   }
 
   adivinar(letra: string) {
@@ -48,7 +49,7 @@ export class AhorcadoComponent {
       this.puntos = 0;
       this.toast.error('¡Has perdido! La palabra secreta era: ' + this.palabraSecreta);
       this.reiniciarAcumuladores();
-      this.iniciarJuego();
+      this.isGameStarted = false;
     } 
     else 
     {

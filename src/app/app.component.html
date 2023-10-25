@@ -13,6 +13,9 @@
             </a>
             <div class="collapse navbar-collapse" id="navbar-toggler">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li  class="nav-item btn" style="margin-right: 10px; background-color: #61814b;" *ngIf="auth.userName && auth.userName == 'admin'">
+                        <a routerLink="/verEncuestas" class="nav-link active" aria-current="page">Ver encuestas</a>
+                    </li>
                     <button type="button" class="btn" *ngIf="auth.userName && auth.userName.length > 2">
                         <span>@{{auth.userName}}</span>
                         <i class="bi bi-person"></i>
@@ -20,22 +23,24 @@
                     <li class="nav-item">
                         <a routerLink="/home" class="nav-link active" aria-current="page">Home</a>
                     </li>
-                    <div *ngIf="auth.logueado == false; else elseBlock" style="width: 100%; display: flex; justify-content: center; align-items: start; ">
-                        <li class="nav-item">
-                            <a routerLink="/login" class="nav-link">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a routerLink="/register" class="nav-link">Register</a>
-                        </li>
-                    </div>
-                    <ng-template #elseBlock>          
-                        <button type="button" class="btn">
-                            <span style="margin-right: 10px;" class="button__text" (click)="OnLogOutClick()">Log out</span>
-                            <i class="bi bi-box-arrow-right"></i>
-                        </button>	
-                    </ng-template>
                     <li class="nav-item">
-                        <a routerLink="/chat" class="nav-link">Chat</a>
+                        <a routerLink="/login" class="nav-link" *ngIf="!(auth.userName && auth.userName.length > 2)">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a routerLink="/register" class="nav-link" *ngIf="!(auth.userName && auth.userName.length > 2)">Register</a>
+                    </li>      
+                    <button type="button" class="btn" *ngIf="auth.userName && auth.userName.length > 2">
+                        <span style="margin-right: 10px;" class="button__text" (click)="OnLogOutClick()">Log out</span>
+                        <i class="bi bi-box-arrow-right"></i>
+                    </button>	
+                    <li class="nav-item">
+                        <a routerLink="/encuesta" class="nav-link" *ngIf="auth.userName && auth.userName.length > 2">Encuesta</a>
+                    </li>
+                    <li class="nav-item">
+                        <a routerLink="/tabla-puntos" class="nav-link">Leaderboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a routerLink="/chat" class="nav-link" *ngIf="auth.userName && auth.userName.length > 2">Chat</a>
                     </li>
                     <li class="nav-item">
                         <a routerLink="/about-me" class="nav-link">About me</a>

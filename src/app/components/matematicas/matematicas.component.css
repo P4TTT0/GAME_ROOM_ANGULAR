@@ -1,0 +1,136 @@
+.start-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0c0909;
+}
+
+.start {
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #814C4B;
+    color: #FFE5D9;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+
+.container
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0px;
+    padding: 20px;
+    font-size: 30px;
+    color: #FFE5D9;
+}
+.span
+{
+    background-color: #814C4B80;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+h1
+{
+    color: #FFE5D9;
+}
+
+.points
+{
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.boton-letra
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button
+{
+    padding: 20px;
+    width: 100%;
+    margin: 10px;
+    background-color: #806767;
+    color: #FFE5D9;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.operation
+{
+    background-color: #814C4B80;
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.response span
+{
+    font-size: 30px;
+    color: #806767;
+}
+
+.button-borrar
+{
+    padding: 10px;
+}
+
+.button-verificar
+{
+    padding: 10px;
+    background-color: #67806c;
+}
+
+.screen
+{
+    margin-top: 3%;
+    padding: 40px;
+}
+
+@media (max-width: 1000px) {
+    .screen
+    {
+        margin-top: 5%;
+    }
+    *
+    {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 900px) {
+    .screen
+    {
+        margin-top: 20%;
+        padding: 5px;
+    }
+    *
+    {
+        font-size: 10px;
+    }
+
+    .operation
+    {
+        margin-top: 10px;
+    }
+}

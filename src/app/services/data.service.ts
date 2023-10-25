@@ -24,6 +24,55 @@ export class DataService {
     });
   }
 
+  public async getPoints(game : string)
+  {
+    const pollCollection = collection(this.firestore, 'Games');
+    const q = query(pollCollection, where('Game', '==', game), orderBy('MaxPoints', 'desc'));
+    const querySnapshot = await getDocs(q);
+    const points = querySnapshot.docs.map(doc => doc.data());
+    console.log(points);
+    return points;
+  }
+
+  public async getPolls()
+  {
+    const pollCollection = collection(this.firestore, 'Encuesta');
+    const querySnapshot = await getDocs(pollCollection);
+    const polls = querySnapshot.docs.map(doc => doc.data());
+    return polls;
+  }
+
+  public async isPollAnswered(userName : string)
+  {
+    const userCollection = collection(this.firestore, 'Encuesta');
+    const q = query(userCollection, where('UserName', '==', userName));
+    const querySnapshot = await getDocs(q);
+    if(!querySnapshot.empty)
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  }
+
+  public async savePoll(userName : string, nombre : string, apellido : string, edad : number, numeroTelefono : number, observaciones : string, juegoFavorito : string, valorPagina : number)
+  {
+    const userCollection = collection(this.firestore, 'Encuesta');
+    await addDoc(userCollection,
+      {
+        UserName: userName,
+        Nombre: nombre,
+        Apellido: apellido,
+        Edad: edad,
+        NumeroTelefono: numeroTelefono,
+        Observaciones: observaciones,
+        JuegoFavorito: juegoFavorito,
+        PuntajePagina: valorPagina,
+      });
+  }
+
   public async savePoints(userName : string, game : string, maxPoints : number)
   {
     const userCollection = collection(this.firestore, 'Games');

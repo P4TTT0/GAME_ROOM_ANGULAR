@@ -30,17 +30,6 @@ color: #FFE5D9 !important;
     color: #FFE5D9 !important;
 }
 
-.app-container {
-    position: relative;
-    min-height: 100vh;
-    background: rgba(0, 0, 0, 0.5); /* Fondo gris medio transparente */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 999; /* Asegura que esté en la parte superior */
-  }
-  
   .loading-overlay {
     position: absolute;
     top: 0;

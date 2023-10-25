@@ -1,0 +1,90 @@
+
+<div class="start-container" *ngIf="this.encuestaEnviada">
+    <div class="start">
+        <H1>¡Gracias por contestar la encuesta!</H1>
+        <span>Hemos recibido tu mensaje, construiremos un sitio mejor!</span>
+    </div>
+</div>
+<div class="container d-flex justify-content-center align-items-center" *ngIf="this.encuestaEnviada == false">
+    <div class="screen" style="margin-top: 90px;">
+        <div class="screen-content d-flex justify-content-center align-items-center">
+            <div> 
+                <form class="login" [formGroup]="regForm">
+                    <h2>Encuesta</h2>
+                    <div class="login__field">
+                        <div>
+                            <input type="text" class="login-input" placeholder="Nombre" formControlName="Nombre">
+                            <div *ngIf="regForm.controls['Nombre'].errors != null">
+                                <small *ngIf="regForm.controls['Nombre'].errors!['required'] && regForm.controls['Nombre'].touched">¡El NOMBRE es requerido!</small>
+                            </div>
+                        </div>
+                        <div>
+                            <input type="text" class="login-input" placeholder="Apellido" formControlName="Apellido">
+                            <div *ngIf="regForm.controls['Apellido'].errors != null">
+                                <small
+                                    *ngIf="regForm.controls['Apellido'].errors!['required'] && regForm.controls['Apellido'].touched">¡El APELLIDO es requerido!</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="login__field">
+                        <div>
+                            <input type="number" class="login-input" placeholder="Edad" formControlName="Edad" style="margin-right: 10px;">
+                            <div *ngIf="regForm.controls['Edad'].errors != null">
+                                <small *ngIf="regForm.controls['Edad'].errors!['required'] && regForm.controls['Edad'].touched">¡La EDAD es requerido!</small>
+                                <small *ngIf="regForm.controls['Edad'].errors!['min'] != null && regForm.controls['Edad'].touched">¡La EDAD minima es 18!</small>
+                                <small *ngIf="regForm.controls['Edad'].errors!['max'] != null && regForm.controls['Edad'].touched">¡La EDAD maxima es 99!</small>
+                            </div>
+                        </div>
+                        <div>
+                            <input type="text" class="login-input" placeholder="Telefono" formControlName="NumeroTelefono">
+                            <div *ngIf="regForm.controls['NumeroTelefono'].errors != null">
+                                <small *ngIf="regForm.controls['NumeroTelefono'].errors!['required'] && regForm.controls['NumeroTelefono'].touched">¡El TELEFONO es requerido!</small>
+                                <small *ngIf="regForm.controls['NumeroTelefono'].errors!['pattern'] != null && regForm.controls['NumeroTelefono'].touched" style="margin-right: 5px;">¡Solo NUMEROS!</small>
+                                <small *ngIf="regForm.controls['NumeroTelefono'].errors!['maxlength'] != null && regForm.controls['NumeroTelefono'].touched">¡Maximo 10 numeros!</small>
+                            </div>
+                        </div>
+                    </div>  
+                </form>
+                <hr>
+                <div class="d-flex justify-content-beetween align-items-center">
+                    <div class="d-flex flex-column" style="width: 100%;">
+                        <div>
+                            <span>Observaciones</span>
+                            <textarea class="login-input" style="width: 100%; resize: none;" placeholder="Escribe tu comentario aqui..." [(ngModel)]="this.observaciones"></textarea>
+                        </div>
+                        <span style="margin-bottom: 15px;">Puntacion de la pagina</span>
+                        <div style="background-color: #43403B; padding: 20px; border-radius: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center;" >
+                            <input type="range" id="rango" min="1" max="10" [(ngModel)]="valorSeleccionado" style="width: 100%;">
+                            <p style="margin: 10px 0px 0px 0px; color: #8B8D80; background-color: #814C4B30; padding: 12px; border-radius: 10px;" id="valorSeleccionado">{{ valorSeleccionado }}</p>
+                        </div>
+                    </div>
+                    <div style="width: 100%; margin-left: 40px;">
+                        <span>¿Juego favorito?</span>
+                        <div class="radio-button">
+                            <div>
+                                <input type="radio" id="amor-radio" name="radios" [(ngModel)]="this.juegoFavorito" value="Preguntados" checked>
+                                <label for="amor-radio">Preguntados</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="terror-radio" name="radios" [(ngModel)]="this.juegoFavorito" value="Ahorcado">
+                                <label for="terror-radio">Ahorcado</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="comedia-radio" name="radios" [(ngModel)]="this.juegoFavorito" value="MayorMenor">
+                                <label for="comedia-radio">MayorMenor</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="otros-radio" name="radios" [(ngModel)]="this.juegoFavorito" value="Matemáticas">
+                                <label for="otros-radio">Matemáticas</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-success" style="margin-top: 20px; width: 100%;">
+                    <span (click)="OnSubmitClick()" class="button__text">Submit</span>
+                    <i class="button__icon fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

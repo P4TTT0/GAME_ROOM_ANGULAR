@@ -1,0 +1,39 @@
+<div class="row screen" >
+    <h1 style="text-align: center; padding: 20px; color: #929487; width: 100%; background: #241b19; border-radius: 20px;">¡LEADERBOARD!</h1>
+    <div class="game-container col-md-2">
+        <span>AHORCADO</span>
+        <div class="users-container">
+            <div class="user-points" *ngFor="let userPoints of this.ahorcadoList">
+                <p>{{userPoints.UserName}}</p>
+                <p>{{userPoints.MaxPoints}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="game-container col-md-2">
+        <span>MAYOR Ó MENOR</span>
+        <div class="users-container">
+            <div class="user-points" *ngFor="let userPoints of this.mayorMenorList">
+                <p>{{userPoints.UserName}}</p>
+                <p>{{userPoints.MaxPoints}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="game-container col-md-2">
+        <span>PREGUNTADOS</span>
+        <div class="users-container">
+            <div class="user-points" *ngFor="let userPoints of this.preguntadosList">
+                <p>{{userPoints.UserName}}</p>
+                <p>{{userPoints.MaxPoints}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="game-container col-md-2">
+        <span>MATEMÁTICAS</span>
+        <div class="users-container">
+            <div class="user-points" *ngFor="let userPoints of this.matematicasList">
+                <p>{{userPoints.UserName}}</p>
+                <p>{{userPoints.MaxPoints}}</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -22,9 +22,10 @@ p{
 
 .aside-profile
 {
-    margin-top: 70px;
+    margin-top: 90px;
     flex: 1;
     background-color: #929487;
+    border-radius: 0px 100px 0px 0px;
 }
 
 .h
