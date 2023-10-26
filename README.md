@@ -3,7 +3,7 @@
 
 ¡Hello! ✨ 
 
-This is my web project that i have done with Angular and Typescript, you can take a look here: https://labo-project-iv.web.app/home
+This is my web project that I have done with Angular and Typescript, you can take a look here: https://labo-project-iv.web.app/home
 
 The idea it was to make a game room with some games, chat room and a leaderboard to see the points of the other players.
 
