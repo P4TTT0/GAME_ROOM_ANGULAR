@@ -24,11 +24,11 @@ The idea it was to make a game room with some games, chat room and a leaderboard
 
 ## API'S
 
- - On the cards game (Mayor ó Menor) i used a deck API: https://www.deckofcardsapi.com/
+ - On the cards game (Mayor ó Menor) I used a deck API: https://www.deckofcardsapi.com/
 
- - For the quiz game (Preguntados) i used an Open Trivia Database: https://opentdb.com/
+ - For the quiz game (Preguntados) I used an Open Trivia Database: https://opentdb.com/
 
-- And the last one, for the About Me i used the GitHub API: https://api.github.com/users/p4ttt0
+- And the last one, for the About Me I used the GitHub API: https://api.github.com/users/p4ttt0
 
 
 ## Screenshots
